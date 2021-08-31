@@ -1,0 +1,1 @@
+mongodb+srv://admin:5B7xvECAxYYSa6X@epel.1q26h.mongodb.net/epel?retryWrites=true&w=majority
