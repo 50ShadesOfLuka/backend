@@ -18,5 +18,6 @@ collection = db['epeldata']
 #     file_data = json.load(f)
 # collection.insert_many(file_data)
 
-for doc in collection.find():
-    print(doc)
+data = list(collection.find())
+
+print(data)
