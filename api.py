@@ -24,21 +24,21 @@ collection = db['epeldata']
 
 def getData():
     data = list(collection.find())
-    data = {item['id']:item for item in data}
+    # Can't use a object as a key, so I cast it to a str
+    data = {str(item['_id']):item for item in data}
     return data
 
 def parse_json(data):
     return json.loads(json_util.dumps(data))
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/", methods=["GET"])
 def index():
-    if request.method == "POST":
-        pass
-    else:
+    if request.method == "GET":
         data = getData()
         data = parse_json(data)
-        return data 
-
+        return data
+    else:
+        return "API fault or wrong HTTP type"
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
